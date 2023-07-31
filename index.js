@@ -1,33 +1,59 @@
+const fs = require('fs');
 const { Configuration , OpenAIApi }= require('openai');
-
 
 const config = new Configuration({
    apiKey: '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'
 });
 
-
 const openai = new OpenAIApi(config);
 
 
+async function callApiAndSaveResponses(inputFolder, outputFolder) {
+  // Verificar si la carpeta de entrada existe
+  if (!fs.existsSync(inputFolder)) {
+    console.log(`La carpeta de entrada '${inputFolder}' no existe.`);
+    return;
+  }
 
+  // Crear la carpeta de salida si no existe
+  if (!fs.existsSync(outputFolder)) {
+    fs.mkdirSync(outputFolder);
+    console.log(`La carpeta de salida '${outputFolder}' ha sido creada.`);
+  }
 
-const runPrompt = async () => {
-   const prompt = `Que caterogira le darias (para facil categorizacion) y cual es el tema de la siguiente peticion ciudadana en cuatro palabras, y tambien ayudame a identificar si el mensaje tiene una direccion: "Me gustaría proponer un plebiscito para el proyecto del tren elevado sky train baja de San Ysidro a Rosarito; Esto porque creo que no hay transparencia y la ciudadanía no tiene la participación que se merece en la toma de decisiones que afectan a todos; Ya que aun cuando se dice que el tren no afectará pues es inversión privada se ignoran todos los costos escondidos aunados a un cambio de infraestructura en calles principales de la ciudad."`;
+  // Leer los nombres de archivos en la carpeta de entrada
+  const files = fs.readdirSync(inputFolder);
 
+  for (const filename of files) {
+    if (filename.endsWith('.txt')) {
+      // Leer el contenido del archivo de texto
+      const content = fs.readFileSync(`${inputFolder}/${filename}`, 'utf8');
 
-   const response = await openai.createCompletion({
-       model: "text-davinci-003",
-       prompt: prompt,
-       max_tokens: 2048,
-       temperature: 1,
-   });
+      try {
+        // Realizar la llamada al API
+        const response = await axios.post(apiEndpoint, { text: content });
 
+        if (response.status === 200) {
+          // Obtener el string de respuesta del API
+          const apiResponseString = response.data;
 
-   const tema = response.data.choices[0].text;
-   console.log(tema);
+          // Guardar el string en un nuevo archivo en la carpeta de salida
+          const outputFilename = `response_${filename}`;
+          fs.writeFileSync(`${outputFolder}/${outputFilename}`, apiResponseString);
+
+          console.log(`Respuesta guardada en '${outputFilename}'`);
+        } else {
+          console.log(`Fallo en la llamada al API para el archivo '${filename}'. Status code: ${response.status}`);
+        }
+      } catch (error) {
+        console.log(`Error en la llamada al API para el archivo '${filename}': ${error.message}`);
+      }
+    }
+  }
 }
 
+// Ejemplo de uso
+const inputFolderPath = 'input';
+const outputFolderPath = 'result';
 
-
-
-runPrompt();
+callApiAndSaveResponses(inputFolderPath, outputFolderPath);
