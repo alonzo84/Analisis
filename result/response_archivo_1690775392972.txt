@@ -1,12 +1,7 @@
 
 
-Categoria: Infraestructura
-Tema: Fuga de Agua
-Ubicación: Calle Prolongación Jalisco 3480, Tijuana, B.C.
-
-Respuesta en formato JSON:
 {
-    "categoria": "Infraestructura",
-    "tema": "Fuga de Agua",
-    "ubicacion": "Calle Prolongación Jalisco 3480, Tijuana, B.C."
+    "categoria": "Fuga de Agua",
+    "tema": "Prolongacion Jalisco 3480, Tijuana, B.C.",
+    "ubicacion": "Tijuana, B.C."
 }

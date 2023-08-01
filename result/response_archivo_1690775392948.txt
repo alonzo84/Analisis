@@ -1,11 +1,8 @@
 
 
-Categoria: Invasión 
-Tema: Valle Las Palmas 
-Ubicación: Carretera 
-
-Respuesta: {
+Respuesta: 
+{
     "categoria": "Invasión",
-    "tema": "Valle Las Palmas",
-    "ubicacion": "Carretera"
+    "tema": "Valle las Palmas",
+    "ubicacion": "Cerca de la carretera"
 }
