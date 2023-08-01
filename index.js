@@ -7,6 +7,24 @@ const config = new Configuration({
 
 const openai = new OpenAIApi(config);
 
+const runPrompt = async (peticion) => {
+  const prompt = `Que caterogira le darias (para facil categorizacion) y cual es el tema de la siguiente peticion ciudadana en cuatro palabras, y tambien ayudame a identificar si el mensaje tiene una ubicacion, coordenadas, o direccion: "${peticion}"`;
+
+
+  const response = await openai.createCompletion({
+      model: "text-davinci-003",
+      prompt: prompt,
+      max_tokens: 2048,
+      temperature: 1,
+  });
+
+
+  const tema = response.data.choices[0].text;
+  console.log(tema)
+  return tema;
+  
+}
+
 
 async function callApiAndSaveResponses(inputFolder, outputFolder) {
   // Verificar si la carpeta de entrada existe
@@ -31,11 +49,11 @@ async function callApiAndSaveResponses(inputFolder, outputFolder) {
 
       try {
         // Realizar la llamada al API
-        const response = await axios.post(apiEndpoint, { text: content });
+        const response = await runPrompt(content)
 
-        if (response.status === 200) {
+        if (response) {
           // Obtener el string de respuesta del API
-          const apiResponseString = response.data;
+          const apiResponseString = response;
 
           // Guardar el string en un nuevo archivo en la carpeta de salida
           const outputFilename = `response_${filename}`;
@@ -43,10 +61,10 @@ async function callApiAndSaveResponses(inputFolder, outputFolder) {
 
           console.log(`Respuesta guardada en '${outputFilename}'`);
         } else {
-          console.log(`Fallo en la llamada al API para el archivo '${filename}'. Status code: ${response.status}`);
+          console.log(`Fallo en la llamada al API para el archivo`);
         }
       } catch (error) {
-        console.log(`Error en la llamada al API para el archivo '${filename}': ${error.message}`);
+        console.log(`Error en la llamada al API para el archivo '${filename}': ${error}`);
       }
     }
   }
