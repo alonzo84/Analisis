@@ -1,5 +1,7 @@
 
 
-Categoría: Seguridad.
-TEMA: Invasión en Valle.
-Ubicación: Carretera cercana.
+{ 
+	"categoria": "Problemas de Seguridad",
+	"tema": "Invasiones",
+	"ubicacion": "Valle las Palmas, cerca de la carretera"
+}

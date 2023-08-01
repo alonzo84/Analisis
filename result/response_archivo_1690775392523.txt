@@ -1,5 +1,7 @@
- 
 
-Categoría: Seguridad
-Tema: Falta de Seguridad
-Ubicación: Villas del Campo
+
+{
+    "categoria": "Seguridad",
+    "tema": "Villas del Campo",
+    "ubicacion": "Colonia"
+}
