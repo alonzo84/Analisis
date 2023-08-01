@@ -51,10 +51,9 @@ async function callApiAndSaveResponses(inputFolder, outputFolder) {
       try {
         // Realizar la llamada al API
         const response = await runPrompt(content)
-
         if (response) {
           // Obtener el string de respuesta del API
-          const apiResponseString = response;
+          const apiResponseString = `${response}\n"original": "${content}"`;
 
           // Guardar el string en un nuevo archivo en la carpeta de salida
           const outputFilename = `response_${filename}`;
