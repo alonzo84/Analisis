@@ -8,9 +8,9 @@ const config = new Configuration({
 const openai = new OpenAIApi(config);
 
 const runPrompt = async (peticion) => {
-  //const prompt = `Que categoria le darias (para facil categorizacion) y cual es el tema de la siguiente peticion ciudadana en cuatro palabras, y tambien ayudame a identificar si el mensaje tiene una ubicacion, coordenadas, o direccion. Ademas entrega la respuesta en formato JSON con los parametros categoria, tema, y ubicacion: "${peticion}"`;
+  const prompt = `Que categoria le darias (para facil categorizacion) y cual es el tema de la siguiente peticion ciudadana en cuatro palabras, tambien identifica si el mensaje tiene una ubicacion, coordenadas, o direccion. La respuesta que sea un JSON con los parametros categoria, tema, y ubicacion: "${peticion}"`;
   //const prompt = `Encuentra la categoria, tema, y ubicacion de la siguiente peticion ciudadana (dame la respuesta en JSON con los parametros categoria, tema y ubicacion): "${peticion}"`
-  const prompt = `Analiza la siguiente peticion ciudadana dame la respuesta en formato JSON con los parametros categoria, tema, y ubicacion: "${peticion}"`
+  //const prompt = `Analiza la siguiente peticion ciudadana dame la respuesta en formato JSON con los parametros categoria, tema, y ubicacion: "${peticion}"`
 
   const response = await openai.createCompletion({
       model: "text-davinci-003",

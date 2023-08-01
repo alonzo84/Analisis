@@ -1,7 +1,7 @@
 
 
 {
-    "categoria": "Fuga de Agua",
-    "tema": "Prolongacion Jalisco 3480, Tijuana, B.C.",
-    "ubicacion": "Tijuana, B.C."
+  "categoria": "Servicios Públicos",
+  "tema": "Fuga de Agua",
+  "ubicacion": "Calle Prolongación Jalisco 3480, Tijuana, B.C."
 }

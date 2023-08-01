@@ -2,6 +2,6 @@
 
 {
     "categoria": "Seguridad",
-    "tema": "Villas del Campo",
-    "ubicacion": "Colonia"
+    "tema": "Falta de Seguridad",
+    "ubicacion": "Villas del Campo"
 }
