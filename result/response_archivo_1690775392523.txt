@@ -1,7 +1,8 @@
 
 
-{
-    "categoria": "Seguridad",
-    "tema": "Villas del Campo",
-    "ubicacion": "Colonia"
-}
+Categoria: Seguridad
+Tema: Necesidad de Seguridad
+Ubicación: Villas del Campo
+
+Respuesta en formato JSON:
+{"categoria": "Seguridad", "tema": "Necesidad de Seguridad", "ubicación": "Villas del Campo"}

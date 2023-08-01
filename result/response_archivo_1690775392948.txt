@@ -1,7 +1,11 @@
 
 
-{ 
-	"categoria": "Problemas de Seguridad",
-	"tema": "Invasiones",
-	"ubicacion": "Valle las Palmas, cerca de la carretera"
+Categoria: Invasión 
+Tema: Valle Las Palmas 
+Ubicación: Carretera 
+
+Respuesta: {
+    "categoria": "Invasión",
+    "tema": "Valle Las Palmas",
+    "ubicacion": "Carretera"
 }
