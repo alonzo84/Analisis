@@ -1,8 +1,0 @@
-
-
-{
-    "categoria": "Seguridad",
-    "tema": "Falta de seguridad",
-    "ubicacion": "Villas del Campo"
-}
-"original": "En mi colonia lo que mas hace falta es seguridad. Villas del Campo"

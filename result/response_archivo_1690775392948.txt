@@ -1,8 +1,0 @@
-
-
-{
-    "categoria": "Invasión",
-    "tema": "Valle las Palmas",
-    "ubicacion": "Cerca de la carretera"
-}
-"original": "Invasion en Valle las Palmas, cerca de la carretera"

@@ -6,11 +6,13 @@ const config = new Configuration({
 });
 
 const openai = new OpenAIApi(config);
+ 
+let sleep = (delay) => new Promise((resolve) => setTimeout(resolve, delay*1000))
 
 const runPrompt = async (peticion) => {
   const prompt = `Que categoria le darias (para facil categorizacion) y cual es el tema de la siguiente peticion ciudadana en cuatro palabras, tambien identifica si el mensaje tiene una ubicacion, coordenadas, o direccion. La respuesta que sea un JSON con los parametros categoria, tema, y ubicacion: "${peticion}"`;
   //const prompt = `Encuentra la categoria, tema, y ubicacion de la siguiente peticion ciudadana (dame la respuesta en JSON con los parametros categoria, tema y ubicacion): "${peticion}"`
-  //const prompt = `Analiza la siguiente peticion ciudadana dame la respuesta en formato JSON con los parametros categoria, tema, y ubicacion: "${peticion}"`
+  //const prompt = `Que categoria le darias (para facil categorizacion) y cual es el tema en cuatro palabras sobre lo que pide el estudiante, ya que el siguiente mensaje es la respuesta a la pregunta: "Que esperas de la clase de informatica", mensaje: "${peticion}"`
 
   const response = await openai.createCompletion({
       model: "text-davinci-003",
@@ -71,7 +73,7 @@ async function callApiAndSaveResponses(inputFolder, outputFolder) {
 }
 
 // Ejemplo de uso
-const inputFolderPath = 'input';
-const outputFolderPath = 'result';
+const inputFolderPath = 'mensajes';
+const outputFolderPath = 'analizados';
 
 callApiAndSaveResponses(inputFolderPath, outputFolderPath);

@@ -12,7 +12,11 @@ const peticion = "Me gustaría proponer un plebiscito para el proyecto del tren 
 
 
 const runPrompt = async (peticion) => {
-   const prompt = `Que caterogira le darias (para facil categorizacion) y cual es el tema de la siguiente peticion ciudadana en cuatro palabras, y tambien ayudame a identificar si el mensaje tiene una ubicacion, coordenadas, o direccion: "${peticion}"`;
+   const prompt = `Que caterogira le darias (para facil categorizacion)
+    y cual es el tema de la siguiente peticion ciudadana en cuatro palabras,
+    y tambien ayudame a identificar si el mensaje tiene una ubicacion,
+    coordenadas, o direccion: (agrega la informacion que indique que la ubicacion
+    se encuentra en Mexico) "${peticion}"`;
 
 
    const response = await openai.createCompletion({
@@ -24,7 +28,7 @@ const runPrompt = async (peticion) => {
 
 
    const tema = response.data.choices[0].text;
-   console.log(tema);
+   return tema;
 }
 
 
